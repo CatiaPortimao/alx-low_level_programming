@@ -1,40 +1,49 @@
 #include "main.h"
 /**
- * print_times_table - a function that prints the n times table
- * @n: input
- * Return: times table
- * add extra space past single digit
+ * print_times_table - prints the n times table, starting with 0.
+ *
+ * @n: int type
+ *
+ *  Return: n times table
  */
+
 void print_times_table(int n)
 {
-	int r, c, d;
+	int row, col;
 
-	if ((n <= 15) || (n > 0))
+	if (n < 15 || n < 0)
+
+	for (row = 0; row <= n; row++)
 	{
-		for (r = 0; r <= n; r++)
+		for (col = 0; col <= n; col++)
 		{
-			_putchar('0');
-			_putchar(',');
-			_putchar(' ');
-			for (c = 1; c <= n; c++)
+			if (col == 0)
+				_putchar(((row * col) % 10) + '0');
+			else if ((row * col) <= 9)
 			{
-				d = (r * c);
-				if ((d / 10) > 0)
-				{
-					_putchar((d / 10) + '0');
-				}
-				else
-				{
-					_putchar(' ');
-				}
-				_putchar((d % 10) + '0');
-				if (c < n)
-				{
-					_putchar(',');
-					_putchar(' ');
-				}
+				_putchar(',');
+				_putchar(' ');
+				_putchar(' ');
+				_putchar(' ');
+				_putchar((row * col) + '0');
 			}
-			_putchar('\n');
+			else if ((row * col) <= 99)
+			{
+				_putchar(',');
+				_putchar(' ');
+				_putchar(' ');
+				_putchar(((row * col) / 10) + '0');
+				_putchar(((row * col) % 10) + '0');
+			}
+			else
+			{
+				_putchar(',');
+				_putchar(' ');
+				_putchar(((row * col) / 100) + '0');
+				_putchar((((row * col) / 10) % 10) + '0');
+				_putchar(((row * col) % 10) + '0');
+			}
 		}
+		_putchar('\n');
 	}
 }
